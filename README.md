@@ -4,7 +4,7 @@ A simple flutter package to show rippple effect in any widget
 
 ## Usage
 
-[Example] (https://github.com/Destiny-Ed/date_count_down/blob/main/example/example.dart)
+[Example] (https://github.com/Destiny-Ed/flutter_ripple/blob/main/example/example.dart)
 
 To use this package : *add the dependency to your [pubspec.yaml] file
 
@@ -12,15 +12,16 @@ To use this package : *add the dependency to your [pubspec.yaml] file
    dependencies:
         flutter:
             sdk : flutter
-        date_count_down:
+        flutter_ripple: ^0.0.1
 ```
 
 ## Add to your dart file
 
 ```dart
-    import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-import 'package:date_count_down/date_count_down.dart';
+import 'package:flutter_ripple/flutter_ripple.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -30,73 +31,82 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Count Down',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Count Down'),
+      home: RippleExample(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
 
-  final String title;
+
+class RippleExample extends StatefulWidget {
+  const RippleExample({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _RippleExampleState createState() => _RippleExampleState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  String countDown = 'Loading';
-
+class _RippleExampleState extends State<RippleExample> {
   @override
   Widget build(BuildContext context) {
-    //List of Date to countDown
-    List<DateTime> s = [
-      DateTime.utc(2022),
-      DateTime.utc(2021),
-      DateTime(2021, 2, 7)
-    ];
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Flutter Ripple'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+        child: Stack(
+          children: [
+            ///Show Ripple Widget
+            FlutterRipple(
+              child: Text("Flutter Ripple"),
+              rippleColor: Colors.blue,
+              onTap: () {
+                print("hello");
+              },
             ),
-            Expanded(
-              child: ListView(
-                children: List.generate(3, (index) {
-                  countDown = CountDown()
-                      .timeLeft(s[index], 'Time Ended', longDateName: true);
-                  return Text(
-                    countDown,
-                    style: Theme.of(context).textTheme.headline4,
-                  );
-                }),
+            Positioned(
+              top: MediaQuery.of(context).size.height / 2 + 100,
+              right: 50,
+              left: 50,
+              child: Container(
+                child: Column(
+                  children: [
+                    Text(
+                      "Searching for location.",
+                      textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 15),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Text(
+                        "Find All Location",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
+                ),
               ),
             )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
 }
 
 ```
+
+## Say Hi To Me
+
+- Twitter : @DestinyEd8
+- Linkedin : www.linkedin.com/in/destiny-ed
 
 ## Getting Started
 
