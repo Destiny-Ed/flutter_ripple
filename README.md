@@ -2,6 +2,10 @@
 
 A simple flutter package to show rippple effect in any widget 
 
+## Sample Image
+
+
+
 ## Usage
 
 [Example] (https://github.com/Destiny-Ed/flutter_ripple/blob/main/example/example.dart)
