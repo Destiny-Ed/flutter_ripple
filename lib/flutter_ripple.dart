@@ -107,7 +107,9 @@ class _FlutterRippleState extends State<FlutterRipple>
           children: <Widget>[
             ...List.generate(
               4,
-              (index) => _containerWidget((100 * index) * _controller!.value),
+              (index) => _containerWidget(widget.radius == null
+                  ? (100 * index) * _controller!.value
+                  : (widget.radius! * index) * _controller!.value),
             ),
             Align(child: widget.child),
           ],

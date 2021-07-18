@@ -2,3 +2,7 @@
 
 * First Release
 
+## [0.0.2]
+
+* Users can specify the ripple radius
+
