@@ -8,5 +8,5 @@
 
 ## [0.0.3]
 
-* Fixed "animationController not dispose" properly thereby avoiding memory leak
+* Fixed 'animationController not dispose' properly thereby avoiding memory leak
 
