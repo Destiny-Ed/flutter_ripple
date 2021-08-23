@@ -93,6 +93,12 @@ class _FlutterRippleState extends State<FlutterRipple>
   }
 
   @override
+  void dispose() {
+    _controller!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(onTap: widget.onTap ?? null, child: _bodyWidget());
   }
